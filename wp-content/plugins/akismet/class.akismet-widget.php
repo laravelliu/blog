@@ -2,24 +2,26 @@
 /**
  * @package Akismet
  */
-class Akismet_Widget extends WP_Widget {
+class Akismet_Widget extends WP_Widget
+{
+    public function __construct()
+    {
+        load_plugin_textdomain('akismet');
+        
+        parent::__construct(
+            'akismet_widget',
+            __('Akismet Widget', 'akismet'),
+            array( 'description' => __('Display the number of spam comments Akismet has caught', 'akismet') )
+        );
 
-	function __construct() {
-		load_plugin_textdomain( 'akismet' );
-		
-		parent::__construct(
-			'akismet_widget',
-			__( 'Akismet Widget' , 'akismet'),
-			array( 'description' => __( 'Display the number of spam comments Akismet has caught' , 'akismet') )
-		);
+        if (is_active_widget(false, false, $this->id_base)) {
+            add_action('wp_head', array( $this, 'css' ));
+        }
+    }
 
-		if ( is_active_widget( false, false, $this->id_base ) ) {
-			add_action( 'wp_head', array( $this, 'css' ) );
-		}
-	}
-
-	function css() {
-?>
+    public function css()
+    {
+        ?>
 
 <style type="text/css">
 .a-stats {
@@ -59,56 +61,57 @@ class Akismet_Widget extends WP_Widget {
 </style>
 
 <?php
-	}
+    }
 
-	function form( $instance ) {
-		if ( $instance && isset( $instance['title'] ) ) {
-			$title = $instance['title'];
-		}
-		else {
-			$title = __( 'Spam Blocked' , 'akismet' );
-		}
-?>
+    public function form($instance)
+    {
+        if ($instance && isset($instance['title'])) {
+            $title = $instance['title'];
+        } else {
+            $title = __('Spam Blocked', 'akismet');
+        } ?>
 
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:' , 'akismet'); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		<label for="<?php echo $this->get_field_id('title'); ?>"><?php esc_html_e('Title:', 'akismet'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
 		</p>
 
 <?php
-	}
+    }
 
-	function update( $new_instance, $old_instance ) {
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		return $instance;
-	}
+    public function update($new_instance, $old_instance)
+    {
+        $instance['title'] = strip_tags($new_instance['title']);
+        return $instance;
+    }
 
-	function widget( $args, $instance ) {
-		$count = get_option( 'akismet_spam_count' );
+    public function widget($args, $instance)
+    {
+        $count = get_option('akismet_spam_count');
 
-		if ( ! isset( $instance['title'] ) ) {
-			$instance['title'] = __( 'Spam Blocked' , 'akismet' );
-		}
+        if (! isset($instance['title'])) {
+            $instance['title'] = __('Spam Blocked', 'akismet');
+        }
 
-		echo $args['before_widget'];
-		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'];
-			echo esc_html( $instance['title'] );
-			echo $args['after_title'];
-		}
-?>
+        echo $args['before_widget'];
+        if (! empty($instance['title'])) {
+            echo $args['before_title'];
+            echo esc_html($instance['title']);
+            echo $args['after_title'];
+        } ?>
 
 	<div class="a-stats">
-		<a href="https://akismet.com" target="_blank" title=""><?php printf( _n( '<strong class="count">%1$s spam</strong> blocked by <strong>Akismet</strong>', '<strong class="count">%1$s spam</strong> blocked by <strong>Akismet</strong>', $count , 'akismet'), number_format_i18n( $count ) ); ?></a>
+		<a href="https://akismet.com" target="_blank" title=""><?php printf(_n('<strong class="count">%1$s spam</strong> blocked by <strong>Akismet</strong>', '<strong class="count">%1$s spam</strong> blocked by <strong>Akismet</strong>', $count, 'akismet'), number_format_i18n($count)); ?></a>
 	</div>
 
 <?php
-		echo $args['after_widget'];
-	}
+        echo $args['after_widget'];
+    }
 }
 
-function akismet_register_widgets() {
-	register_widget( 'Akismet_Widget' );
+function akismet_register_widgets()
+{
+    register_widget('Akismet_Widget');
 }
 
-add_action( 'widgets_init', 'akismet_register_widgets' );
+add_action('widgets_init', 'akismet_register_widgets');

@@ -17,9 +17,11 @@
 $('.cover-img').css("background-image","url(/wp-content/themes/jianux/images/"+week+".jpg)");  
 </script>         
     <script src="<?php bloginfo('template_url'); ?>/js/full.js"></script>
-<?php if( is_singular() ){ ?>
+<?php if (is_singular()) {
+    ?>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/comments-ajax.js"></script>
-<?php } ?>
+<?php
+} ?>
 <?php wp_footer(); ?>
   </body>
 </html>

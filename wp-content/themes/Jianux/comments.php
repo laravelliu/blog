@@ -1,12 +1,12 @@
-<?php if ( post_password_required() ) : ?>
-<?php _e( 'Enter your password to view comments.' ); ?>
+<?php if (post_password_required()) : ?>
+<?php _e('Enter your password to view comments.'); ?>
 <?php return; endif; ?>
 
 <div id="comments">
 <h1 class="comment-title">
-这篇文章<?php comments_number('还没有评论','有1条评论','有%条评论'); ?>
+这篇文章<?php comments_number('还没有评论', '有1条评论', '有%条评论'); ?>
  </h1>
-  <?php if ( have_comments() ) : ?>
+  <?php if (have_comments()) : ?>
     <div class="com-1">
     <ol class="commentlist">
       <?php wp_list_comments('type=comment&callback=mytheme_comment&max_depth=10000'); ?>
@@ -22,12 +22,12 @@
 		<h2>
 		发表评论<small><?php cancel_comment_reply_link('点击取消回复'); ?></small>
 		</h2>	
-		<?php if ( get_option('comment_registration') && !$user_ID ) : ?>
+		<?php if (get_option('comment_registration') && !$user_ID) : ?>
 		<div class="comment-tip"><p>您必须<a href="<?php echo wp_login_url(); ?>">登录</a>才能评论</p></div>
     <?php else : ?>
     <form action="" method="post" id="commentform">
-      <?php if ( $user_ID ) : ?>
-	  <?php if ( is_user_logged_in() ) : ?>
+      <?php if ($user_ID) : ?>
+	  <?php if (is_user_logged_in()) : ?>
       <div class="comment-tip"><p>
 	  <?php {
 $user = wp_get_current_user();
@@ -39,7 +39,7 @@ echo apply_filters('loginout', $link);
 	  <?php endif; ?>
 	<?php endif; ?>
 		<div>
-		<?php if ( ! $user_ID ): ?>
+		<?php if (! $user_ID): ?>
 	<div id="comment-author-info">
 <p>
 	<label>昵称：</label>

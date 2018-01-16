@@ -1,6 +1,11 @@
 <?php ini_set('display_errors', 0); ?>
 <?php 
-if (function_exists('get_header')) {get_header();}else{header("Location: http://" . $_SERVER['HTTP_HOST'] . "");exit;}; ?>
+if (function_exists('get_header')) {
+    get_header();
+} else {
+    header("Location: http://" . $_SERVER['HTTP_HOST'] . "");
+    exit;
+}; ?>
 <?php get_header();?>
 <div class="row-fluid">
       
@@ -31,7 +36,7 @@ if (function_exists('get_header')) {get_header();}else{header("Location: http://
                 if (have_posts()) : while (have_posts()) : the_post();
                     get_template_part('post', 'homepage');
                 endwhile;
-                endif; 
+                endif;
             ?>
 </ul>
 <div id="pagination">

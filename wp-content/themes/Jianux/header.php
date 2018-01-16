@@ -32,7 +32,7 @@
       <a class="active logo">
         <b>简</b>
 </a>
-<?php wp_nav_menu( array( 'theme_location' => 'menu-primary', 'container_class' => 'menu-primary-container', 'menu_class' => 'menus menu-primary', 'menu_id' => 'menu-primary-items', 'fallback_cb' => '' ) ); ?>
+<?php wp_nav_menu(array( 'theme_location' => 'menu-primary', 'container_class' => 'menu-primary-container', 'menu_class' => 'menus menu-primary', 'menu_id' => 'menu-primary-items', 'fallback_cb' => '' )); ?>
   </div>
   
 </div>

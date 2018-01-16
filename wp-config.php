@@ -47,14 +47,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         '4|1^.?<>hsotl<tLm7J-n-i+KU)JvFBT!vF1lcgLVy8H3;8&6;/KlJ*D;rs6{o:~');
-define('SECURE_AUTH_KEY',  'wduwc62>>GyOy~Kk#=>5-1dZS(U,Rm`buQ2s|)/=IuW%3Og[%)s]dxv-8No:R4Kd');
-define('LOGGED_IN_KEY',    'd;lFxlaa;xadOJW(xo9>E!z1izv`_#Qa7%`}6Gt%RLloy$M!Lav( sCZxkE(Nd/!');
-define('NONCE_KEY',        'Ieh*g*J,HVaW{.yW(r^&0f*4%6+ >pC@p)y=R(zI~m=3~]bL%XV|IH:N*2j1D^.,');
-define('AUTH_SALT',        'aTDH00qgP#v#SH_5=G7JVPBneOOEScO^AC/p2jZkO*E49$>w+!|/J$PLiP8L,Ie{');
+define('AUTH_KEY', '4|1^.?<>hsotl<tLm7J-n-i+KU)JvFBT!vF1lcgLVy8H3;8&6;/KlJ*D;rs6{o:~');
+define('SECURE_AUTH_KEY', 'wduwc62>>GyOy~Kk#=>5-1dZS(U,Rm`buQ2s|)/=IuW%3Og[%)s]dxv-8No:R4Kd');
+define('LOGGED_IN_KEY', 'd;lFxlaa;xadOJW(xo9>E!z1izv`_#Qa7%`}6Gt%RLloy$M!Lav( sCZxkE(Nd/!');
+define('NONCE_KEY', 'Ieh*g*J,HVaW{.yW(r^&0f*4%6+ >pC@p)y=R(zI~m=3~]bL%XV|IH:N*2j1D^.,');
+define('AUTH_SALT', 'aTDH00qgP#v#SH_5=G7JVPBneOOEScO^AC/p2jZkO*E49$>w+!|/J$PLiP8L,Ie{');
 define('SECURE_AUTH_SALT', '^iuomBIcXZ9V29e?sV( GBmamhQN~w9/ rp[1W.m(JlXesQvPe.7|f_g+fHM^_K(');
-define('LOGGED_IN_SALT',   'le{4RmuY_-8dR,BI?G{yhE}V&Db,9y,ng`E$gzCX0V8eUa %3+_cKCQ:Hv`a|r%m');
-define('NONCE_SALT',       '|mb.hKV^np#$B>yr).m8} Y];Dk.l1>g/N}y/d3bjh?(F/S=t#.*30x>>.a[U1Q]');
+define('LOGGED_IN_SALT', 'le{4RmuY_-8dR,BI?G{yhE}V&Db,9y,ng`E$gzCX0V8eUa %3+_cKCQ:Hv`a|r%m');
+define('NONCE_SALT', '|mb.hKV^np#$B>yr).m8} Y];Dk.l1>g/N}y/d3bjh?(F/S=t#.*30x>>.a[U1Q]');
 
 /**#@-*/
 
@@ -89,9 +89,9 @@ define('WP_ZH_CN_ICP_NUM', true);
 /* 好了！请不要再继续编辑。请保存本文件。使用愉快！ */
 
 /** WordPress目录的绝对路径。 */
-if ( !defined('ABSPATH') )
-	define('ABSPATH', dirname(__FILE__) . '/');
+if (!defined('ABSPATH')) {
+    define('ABSPATH', dirname(__FILE__) . '/');
+}
 
 /** 设置WordPress变量和包含文件。 */
 require_once(ABSPATH . 'wp-settings.php');
-
