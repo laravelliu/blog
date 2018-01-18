@@ -14,7 +14,7 @@ if (function_exists('get_header')) {
     <div class="cover-img" style="background-image: url(http://upload.jianshu.io/daily_images/images/R94qYyxsSyYsX5xz6h7q.jpg)"></div>
     <div class="bottom-block">
       <h1><?php bloginfo('name'); ?></h1>
-      <h3>找回文字的力量</h3>
+      <h3><?php bloginfo('description'); ?></h3>
         <p>在这里更好地写作和阅读</p>
       <a class="btn btn btn-large btn-success" href="/sign_in" id="write-button">提笔写篇文章</a>
     </div>
@@ -28,18 +28,18 @@ if (function_exists('get_header')) {
   <div class="span7 offset3">
     <div class="page-title">
       <ul class="recommened-nav navigation clearfix">
-        <li><a>简书 · 找回文字的力量</a></li>
+        <li><a><?php bloginfo('name'); ?> · <?php bloginfo('description'); ?></a></li>
         <li class="search"><?php get_search_form(); ?></li>
       </ul>
     </div>
  
 <ul class="thumbnails">
-         <?php 
-                if (have_posts()) : while (have_posts()) : the_post();
-                    get_template_part('post', 'homepage');
-                endwhile;
-                endif;
-            ?>
+ <?php
+        if (have_posts()) : while (have_posts()) : the_post();
+            get_template_part('post', 'homepage');
+        endwhile;
+        endif;
+    ?>
 </ul>
 <div id="pagination"><?php next_posts_link(__('点击查看更多')); ?></div>
 </div>
